@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#DCDCDC"
+    tools:context=".view.fragments.MealsInfoFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/left_guide_line"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.04"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/right_guide_line"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.96"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/image_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@id/name"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@drawable/ic_launcher_background" />
+
+                    <ImageView
+                        android:id="@+id/back"
+                        android:layout_width="12pt"
+                        android:layout_height="0pt"
+                        android:src="@drawable/back_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.04"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.14" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8pt"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/type"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/image_holder"
+                    tools:text="Android icon background" />
+
+                <ImageView
+                    android:id="@+id/type_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="2pt"
+                    android:src="@drawable/type_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/type"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintEnd_toStartOf="@id/type"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/type" />
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="2pt"
+                    android:paddingVertical="3pt"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@id/location"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/type_icon"
+                    app:layout_constraintTop_toBottomOf="@id/name"
+                    tools:text="Type: Chicken" />
+
+                <ImageView
+                    android:id="@+id/location_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="2pt"
+                    android:src="@drawable/location_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/location"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintEnd_toStartOf="@id/location"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/location" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3pt"
+                    android:paddingHorizontal="2pt"
+                    android:paddingVertical="3pt"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@id/line1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/location_icon"
+                    app:layout_constraintTop_toBottomOf="@id/type"
+                    tools:text="Area: American" />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toTopOf="@id/youtube_text"
+                    app:layout_constraintTop_toBottomOf="@id/location" />
+
+                <TextView
+                    android:id="@+id/youtube_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5pt"
+                    android:text="Preparation video on YouTube"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="normal|italic"
+                    app:layout_constraintBottom_toTopOf="@id/video_container"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line1" />
+
+                <FrameLayout
+                    android:id="@+id/video_container"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginVertical="8pt"
+                    app:layout_constraintBottom_toTopOf="@id/video_images_list"
+                    app:layout_constraintDimensionRatio="1.5:1"
+                    app:layout_constraintEnd_toEndOf="@id/right_guide_line"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/youtube_text">
+
+                    <ImageView
+                        android:id="@+id/main_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@drawable/ic_launcher_background" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="#66000000">
+
+                        <ImageView
+                            android:layout_width="25pt"
+                            android:layout_height="25pt"
+                            android:layout_gravity="center"
+                            android:src="@drawable/play_icon" />
+
+                    </FrameLayout>
+
+                </FrameLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/video_images_list"
+                    android:layout_width="0dp"
+                    android:layout_height="50pt"
+                    android:layout_marginBottom="5pt"
+                    android:scrollbars="none"
+                    app:layout_constraintBottom_toTopOf="@id/line2"
+                    app:layout_constraintEnd_toEndOf="@id/right_guide_line"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/video_container">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="5pt">
+
+                        <ImageView
+                            android:id="@+id/image_1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintDimensionRatio="1"
+                            app:layout_constraintEnd_toStartOf="@id/image_2"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/image_2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="8pt"
+                            app:layout_constraintDimensionRatio="1"
+                            app:layout_constraintEnd_toStartOf="@id/image_3"
+                            app:layout_constraintStart_toEndOf="@id/image_1" />
+
+                        <ImageView
+                            android:id="@+id/image_3"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintDimensionRatio="1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/image_2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </HorizontalScrollView>
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@android:color/background_dark"
+                    app:layout_constraintBottom_toTopOf="@id/ingredients"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/video_images_list" />
+
+                <TextView
+                    android:id="@+id/ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5pt"
+                    android:gravity="center"
+                    android:text="Ingredients:"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintBottom_toTopOf="@id/ingredients_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/line2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ingredients_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="2pt"
+                    app:layout_constraintBottom_toTopOf="@id/instruction"
+                    app:layout_constraintEnd_toEndOf="@id/right_guide_line"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/ingredients" />
+
+                <TextView
+                    android:id="@+id/instruction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5pt"
+                    android:gravity="center"
+                    android:text="Instruction:"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintBottom_toTopOf="@id/ingredients_list"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/ingredients_list" />
+
+                <TextView
+                    android:id="@+id/instruction_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5pt"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/left_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/instruction"
+                    tools:text="Squeeze lime over chicken and rub well. Drain off excess lime juice.\r\nCombine tomato, scallion, onion, garlic, pepper, thyme, pimento and soy sauce in a large bowl with the chicken pieces. Cover and marinate at least one hour.\r\nHeat oil in a dutch pot or large saucepan. Shake off the seasonings as you remove each piece of chicken from the marinade. Reserve the marinade for sauce.\r\nLightly brown the chicken a few pieces at a time in very hot oil. Place browned chicken pieces on a plate to rest while you brown the remaining pieces.\r\nDrain off excess oil and return the chicken to the pan. Pour the marinade over the chicken and add the carrots. Stir and cook over medium heat for 10 minutes.\r\nMix flour and coconut milk and add to stew, stirring constantly. Turn heat down to minimum and cook another 20 minutes or until tender." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>
