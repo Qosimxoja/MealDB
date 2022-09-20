@@ -36,25 +36,59 @@ class AboutUsFragment : Fragment() {
         sourceAdapter.data = SocialNetworkData.sourceData()
         // loading actions
         adapter.onItemClicked = {
-            if (it == SocialNetworkData.socialNetworkData()[0].name) {
-                val uri = Uri.parse("https://www.instagram.com/kosimkhuja_5574/")
-                startActivity(Intent(Intent.ACTION_VIEW, uri))
-            } else if (it == SocialNetworkData.socialNetworkData()[1].name) {
-                val uri = Uri.parse("https://www.facebook.com/sharipov.qosim")
-                startActivity(Intent(Intent.ACTION_VIEW, uri))
-            } else if (it == SocialNetworkData.socialNetworkData()[2].name) {
-                val uri = Uri.parse("https://www.linkedin.com/in/sharipov-qosim-8b7038226")
-                startActivity(Intent(Intent.ACTION_VIEW, uri))
-            } else if (it == SocialNetworkData.socialNetworkData()[3].name) {
-                val email = Intent(Intent.ACTION_SENDTO)
-                email.data = Uri.parse("mailto:sharipovqosim007@gmail.com")
-                email.putExtra(Intent.EXTRA_SUBJECT, "Subject")
-                email.putExtra(Intent.EXTRA_TEXT, "My Email message")
-                startActivity(email)
+            when (it) {
+                SocialNetworkData.socialNetworkData()[0].name -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://www.instagram.com/kosimkhuja_5574/")
+                        )
+                    )
+                }
+                SocialNetworkData.socialNetworkData()[1].name -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://www.facebook.com/sharipov.qosim")
+                        )
+                    )
+                }
+                SocialNetworkData.socialNetworkData()[2].name -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://www.linkedin.com/in/sharipov-qosim-8b7038226")
+                        )
+                    )
+                }
+                SocialNetworkData.socialNetworkData()[3].name -> {
+                    val email = Intent(Intent.ACTION_SENDTO)
+                    email.data = Uri.parse("mailto:sharipovqosim007@gmail.com")
+                    email.putExtra(Intent.EXTRA_SUBJECT, "Subject")
+                    email.putExtra(Intent.EXTRA_TEXT, "My Email message")
+                    startActivity(email)
+                }
             }
         }
         sourceAdapter.onItemClicked = {
-
+            when (it) {
+                SocialNetworkData.sourceData()[0].name -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://github.com/Qosimxoja/MealDb")
+                        )
+                    )
+                }
+                SocialNetworkData.sourceData()[1].name -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://gitlab.com/Qosim2004/MealDb")
+                        )
+                    )
+                }
+            }
         }
     }
 
